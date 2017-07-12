@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/MrKou47/wechat-pay-sdk/issues"
   },
-  "homepage": "https://github.com/MrKou47/wechat-pay-sdk#readme"
+  "homepage": "https://github.com/MrKou47/wechat-pay-sdk#readme",
+  "devDependencies": {
+    "ts-loader": "^2.2.2",
+    "webpack": "^3.2.0"
+  }
 }
