@@ -1,0 +1,19 @@
+{
+  "name": "wechat-pay-sdk",
+  "version": "1.0.0",
+  "description": "sdk for wechat developer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrKou47/wechat-pay-sdk.git"
+  },
+  "author": "mrkou47",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrKou47/wechat-pay-sdk/issues"
+  },
+  "homepage": "https://github.com/MrKou47/wechat-pay-sdk#readme"
+}
