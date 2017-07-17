@@ -1,12 +1,11 @@
 {
   "name": "wechat-pay-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "sdk for wechat developer",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "dev": "node example/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node example/index.js"
   },
   "repository": {
     "type": "git",
