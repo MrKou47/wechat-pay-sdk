@@ -2,8 +2,10 @@
   "name": "wechat-pay-sdk",
   "version": "1.0.0",
   "description": "sdk for wechat developer",
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
+    "dev": "node example/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +19,18 @@
   },
   "homepage": "https://github.com/MrKou47/wechat-pay-sdk#readme",
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
     "ts-loader": "^2.2.2",
     "webpack": "^3.2.0"
+  },
+  "dependencies": {
+    "@types/request": "0.0.46",
+    "js2xmlparser": "^3.0.0",
+    "md5": "^2.2.1",
+    "request": "^2.81.0",
+    "xml2json": "^0.11.0"
   }
 }
