@@ -80,5 +80,10 @@ You can find params descrption on [微信支付文档](https://pay.weixin.qq.com
 ```bash
 $ git clone https://github.com/MrKou47/wechat-pay-sdk.git
 $ cd wechat-pay-sdk
+```
+
+Before start example, you shou edit `wechat-config.js` with you config. And then:
+
+```bash
 $ npm run dev
 ```
