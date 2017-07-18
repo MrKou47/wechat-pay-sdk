@@ -5,7 +5,7 @@ sdk for wechat developer, build with typescript.
 
 > npm install wechat-pay-sdk --save
 
-### Install definition if you need
+### Install definition if you need!
 
 > npm install "git+https://git@github.com/mrkou47/wechat-pay-sdk.d.ts.git"
 
