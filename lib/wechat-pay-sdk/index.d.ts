@@ -15,7 +15,7 @@ declare class WechatPay {
      * @param code url上的code
      * @param callback 回调
      */
-    getUserOpenId(code: string, callback: ({}) => void): Promise<wechatOpenidRes>;
+    getUserOpenId(code: string, callback?: ({}) => void): Promise<wechatOpenidRes>;
     /**
      * generator sign
      * @param obj
@@ -31,6 +31,6 @@ declare class WechatPay {
      * @param options 发起支付的参数
      * @param callback 回调函数
      */
-    payment(options: paymentArgs, callback: ({}) => void): Promise<{}>;
+    payment(options: paymentArgs, callback?: ({}) => void): Promise<{}>;
 }
 export = WechatPay;

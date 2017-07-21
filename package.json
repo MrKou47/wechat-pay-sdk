@@ -5,7 +5,8 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "dev": "node example/index.js"
+    "dev": "node example/index.js",
+    "test": "mocha -r ts-node/register test/index.ts"
   },
   "repository": {
     "type": "git",
@@ -18,13 +19,18 @@
   },
   "homepage": "https://github.com/MrKou47/wechat-pay-sdk#readme",
   "devDependencies": {
+    "@types/chai": "^4.0.1",
+    "@types/mocha": "^2.2.41",
+    "@types/request": "0.0.46",
     "babel": "^6.23.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2",
     "ts-loader": "^2.2.2",
-    "webpack": "^3.2.0",
-    "@types/request": "0.0.46"
+    "ts-node": "^3.2.1",
+    "webpack": "^3.2.0"
   },
   "dependencies": {
     "js2xmlparser": "^3.0.0",

@@ -42,14 +42,12 @@ export interface paymentArgs {
   notify_url: string,
   // openid
   openid: string,
-  // business order sn 
-  out_trade_no: string,
+  // business order sn
+  out_trade_no: string | number,
   // client ip
   spbill_create_ip: string,
   // 总金额（分）
   total_fee: number,
-  
   // trade_type?: "JSAPI" | "Native" | "APP",
-
   sign?: string;
 }

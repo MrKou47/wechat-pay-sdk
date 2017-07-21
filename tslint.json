@@ -1,0 +1,43 @@
+{
+	"rules": {
+		"no-unused-expression": true,
+		"no-duplicate-variable": true,
+		"no-unused-variable": true,
+		"curly": true,
+		"class-name": true,
+		"semicolon": ["always"],
+		"triple-equals": true,
+		"no-var-requires": false,
+		"quotemark": [
+			"single"
+		],
+		"interface-name": [
+			false
+		],
+		"member-access": [
+			false
+		],
+		"one-variable-per-declaration": [
+			false
+		],
+		"object-literal-sort-keys": [
+			false
+		],
+		"no-console": [
+			false
+		],
+		"ordered-imports": [
+			false
+		],
+		"member-ordering": [
+			false
+		],
+		"max-line-length": [
+			200
+		]
+	},
+	"extends": [
+		"tslint:recommended"
+	],
+	"defaultSeverity": "warning"
+}

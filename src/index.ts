@@ -9,16 +9,17 @@ import * as url from 'url';
 import { readomString } from './util';
 
 class WechatPay {
-	// api hostname
+  // api hostname
   baseUrl: string;
   appid: string;
   secret: string;
+  // tslint:disable-next-line:variable-name
   mch_id: string | number;
-	// 商户密钥
-	key: string;
+  // 商户密钥
+  key: string;
   baseApiObj = {
     protocol: 'https',
-    hostname: 'api.weixin.qq.com'
+    hostname: 'api.weixin.qq.com',
   }
   constructor(options: wechatPayOptions) {
     if (!options) {
@@ -31,13 +32,12 @@ class WechatPay {
     this.key = options.key;
   }
 
-  
   /**
    * 获取用户openid
    * @param code url上的code
    * @param callback 回调
    */
-  getUserOpenId(code: string, callback: ({}) => void): Promise<wechatOpenidRes> {
+  getUserOpenId(code: string, callback?: ({}) => void): Promise<wechatOpenidRes> {
     const { appid, secret } = this;
     return new Promise((resolve, reject) => {
       const openidUrl = url.format(Object.assign({}, {
@@ -46,14 +46,15 @@ class WechatPay {
           appid,
           secret,
           js_code: code,
-          grant_type: 'authorization_code'
-        }
+          grant_type: 'authorization_code',
+        },
       }, this.baseApiObj));
-      request.get(openidUrl, { json:true }, (err, res, data) => {
+      request.get(openidUrl, { json: true }, (err, res, data) => {
         if (err || res.statusCode !== 200) {
           throw new Error('get openid failed');
         } else {
-          resolve(<wechatOpenidRes>data);
+          resolve(data as wechatOpenidRes);
+          // tslint:disable-next-line:curly
           if (callback) callback(data);
         }
       })
@@ -62,27 +63,26 @@ class WechatPay {
 
   /**
    * generator sign
-   * @param obj 
+   * @param obj
    */
-  private _generatorSign(obj:any) {
-
-		let sortArr = Object.keys(obj).sort();
-		let sortStr = '';
-		sortArr = sortArr.map((key) => {
-			return `${key}=${obj[key]}`; 
-		});
+  private _generatorSign(obj: any) {
+    let sortArr = Object.keys(obj).sort();
+    let sortStr = '';
+    sortArr = sortArr.map((key) => {
+      return `${key}=${obj[key]}`;
+    });
     sortArr.push(`key=${this.key}`);
     sortStr = sortArr.join('&');
     return md5(sortStr).toUpperCase();
-
   }
 
   /**
    * 获取client的ip
    * @param req request
    */
+  // tslint:disable-next-line:member-ordering
   getClientIp(req) {
-    return req.ip.match(/\d+\.\d+\.\d+\.\d+/); 
+    return req.ip.match(/\d+\.\d+\.\d+\.\d+/);
   }
 
   /**
@@ -90,8 +90,9 @@ class WechatPay {
    * @param options 发起支付的参数
    * @param callback 回调函数
    */
-  payment(options: paymentArgs, callback:({}) => void) {
-    if(!options) throw new Error('payment method need args');
+  payment(options: paymentArgs, callback?: ({}) => void) {
+    // tslint:disable-next-line:curly
+    if (!options) throw new Error('payment method need args');
     return new Promise((resolve, reject) => {
       const basicReq = {
         appid: this.appid,
@@ -101,18 +102,18 @@ class WechatPay {
       }
       const customerReq = Object.assign({}, basicReq, options);
 
-      let sign = this._generatorSign(customerReq);
+      const sign = this._generatorSign(customerReq);
 
       customerReq.sign = sign;
 
-      let modal2xml = xmlParser.parse('xml', customerReq);
+      const modal2xml = xmlParser.parse('xml', customerReq);
 
       request({
         url: url.format(Object.assign({}, this.baseApiObj, { hostname: 'api.mch.weixin.qq.com', pathname: '/pay/unifiedorder' })),
         method: 'POST',
         body: modal2xml,
       }, (err, res, data) => {
-        let originalData:any = { xml: {} }, wechatPayData:any = {};
+        let originalData: any = { xml: {} }, wechatPayData: any = {};
         if (err || res.statusCode !== 200) {
           reject(new Error('connect failed'));
           return;
@@ -135,14 +136,14 @@ class WechatPay {
         }
         resolve({
           original_data: originalData.xml,
-          wechatpay_data: wechatPayData
+          wechatpay_data: wechatPayData,
         })
-        if(callback) callback({ original_data: originalData, wechatpay_data: wechatPayData });
+        // tslint:disable-next-line:curly
+        if (callback) callback({ original_data: originalData, wechatpay_data: wechatPayData });
       })
     })
   }
 
 }
-
 
 export = WechatPay;

@@ -28,7 +28,7 @@ export interface paymentArgs {
     detail?: string;
     notify_url: string;
     openid: string;
-    out_trade_no: string;
+    out_trade_no: string | number;
     spbill_create_ip: string;
     total_fee: number;
     sign?: string;
