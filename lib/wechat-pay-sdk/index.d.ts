@@ -33,4 +33,4 @@ declare class WechatPay {
      */
     payment(options: paymentArgs, callback?: ({}) => void): Promise<{}>;
 }
-export = WechatPay;
+export default WechatPay;

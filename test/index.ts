@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-// const WechatPay = require('../src');
 import WechatPay from '../src';
+import { readomString } from '../src/util';
 
 const wechatPay = new WechatPay({
   appid: '1234567',
@@ -8,9 +8,6 @@ const wechatPay = new WechatPay({
   mch_id: '1234567',
   key: '1234567',
 });
-
-import { readomString } from '../src/util';
-import 'mocha';
 
 describe('Test readom string with length', () => {
   it('should return a string which length equal input', () => {
