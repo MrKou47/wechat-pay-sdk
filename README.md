@@ -1,4 +1,5 @@
-# wechat-pay-sdk
+# wechat-pay-sdk 
+[![npm version](https://badge.fury.io/js/wechat-pay-sdk.svg)](https://badge.fury.io/js/wechat-pay-sdk) [![Build Status](https://travis-ci.org/MrKou47/wechat-pay-sdk.svg?branch=master)](https://travis-ci.org/MrKou47/wechat-pay-sdk) [![codecov](https://codecov.io/gh/MrKou47/wechat-pay-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/MrKou47/wechat-pay-sdk)
 sdk for wechat developer, build with typescript.
 
 ### Install
