@@ -4,3 +4,4 @@ webpack.config.js
 npm-debug.log
 example
 lib/wechat-pay-sdk
+bin

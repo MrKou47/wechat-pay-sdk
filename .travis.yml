@@ -4,3 +4,5 @@ node_js:
   - "7"
   - "6"
 script: npm test
+before_install: 
+  - "npm i typescript@2.4.x -g"
