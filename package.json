@@ -31,7 +31,8 @@
     "mocha": "^3.4.2",
     "ts-loader": "^2.2.2",
     "ts-node": "^3.2.1",
-    "webpack": "^3.2.0"
+    "webpack": "^3.2.0",
+    "typescript": "^2.4.1"
   },
   "dependencies": {
     "js2xmlparser": "^3.0.0",
