@@ -6,8 +6,8 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "dev": "node example/index.js",
-    "bundle": "webpack && node scripts/fix_default_export.js",
-    "test": "mocha -r ts-node/register test/index.ts --timeout 15000"
+    "bundle": "webpack && node bin/fix_default_export.js",
+    "test": "nyc mocha --require ts-node/register --require source-map-support/register test/index.ts --timeout 15000"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,22 @@
     "url": "https://github.com/MrKou47/wechat-pay-sdk/issues"
   },
   "homepage": "https://github.com/MrKou47/wechat-pay-sdk#readme",
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "include": [
+      "src",
+      "test"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "html"
+    ]
+  },
   "devDependencies": {
     "@types/chai": "^4.0.1",
     "@types/mocha": "^2.2.41",
@@ -29,10 +45,12 @@
     "babel-preset-env": "^1.6.0",
     "chai": "^4.1.0",
     "mocha": "^3.4.2",
+    "nyc": "^11.3.0",
+    "source-map-support": "^0.5.0",
     "ts-loader": "^2.2.2",
     "ts-node": "^3.2.1",
-    "webpack": "^3.2.0",
-    "typescript": "^2.4.1"
+    "typescript": "^2.4.1",
+    "webpack": "^3.2.0"
   },
   "dependencies": {
     "js2xmlparser": "^3.0.0",

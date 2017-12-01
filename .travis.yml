@@ -4,3 +4,11 @@ node_js:
   - "7"
   - "6"
 script: npm test
+install: 
+  - npm install -g codecov mocha typescript
+  - npm install
+env: 
+ global: 
+  - CODECOV_TOKEN=9496ab7a-8852-4c51-895b-25d0cd51e42d
+after_success: 
+ - codecov
