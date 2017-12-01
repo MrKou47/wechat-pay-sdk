@@ -21,6 +21,7 @@ describe('Test class wechatPay', () => {
     it('should return error or openid response', (done) => {
       wechatPay.getUserOpenId('str').then((res) => {
         const reg = /errcode|openid/ig;
+        console.log(res);
         expect(reg.test(JSON.stringify(res))).to.equal(true);
         done();
       }).catch((err) => {
@@ -38,6 +39,7 @@ describe('Test class wechatPay', () => {
         notify_url: 'http://www.baidu.com',
         spbill_create_ip: '123',
       }).then((res) => {
+        console.log(res);
         expect(Array.from(Object.keys(res)).join(',')).to.equal('original_data,wechatpay_data');
         done();
       }).catch((err) => {
