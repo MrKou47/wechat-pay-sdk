@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node example/index.js",
     "bundle": "webpack && node scripts/fix_default_export.js",
-    "test": "mocha -r ts-node/register test/index.ts"
+    "test": "mocha -r ts-node/register test/index.ts --timeout 15000"
   },
   "repository": {
     "type": "git",
