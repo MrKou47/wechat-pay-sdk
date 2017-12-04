@@ -4,6 +4,10 @@ node_js:
   - "7"
   - "6"
 script: npm test
+branch: 
+  except:
+    - ls
+    - list
 install: 
   - npm install -g codecov mocha typescript
   - npm install
