@@ -3,7 +3,7 @@
 		"no-unused-expression": true,
 		"no-duplicate-variable": true,
 		"no-unused-variable": true,
-		"curly": true,
+		"curly": false,
 		"class-name": true,
 		"semicolon": ["always"],
 		"triple-equals": true,

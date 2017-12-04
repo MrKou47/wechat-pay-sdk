@@ -3,7 +3,7 @@ const xml2json = require('xml2json');
 const md5 = require('md5');
 const fs = require('fs');
 
-import { wechatPayOptions, wechatSign, wechatOpenidRes, paymentArgs } from './interface';
+import { WechatPayOptions, WechatSign, WechatOpenidRes, PaymentArgs } from './interface';
 import * as request from 'request';
 import * as url from 'url';
 import { readomString } from './util';
@@ -21,7 +21,7 @@ class WechatPay {
     protocol: 'https',
     hostname: 'api.weixin.qq.com',
   }
-  constructor(options: wechatPayOptions) {
+  constructor(options: WechatPayOptions) {
     if (!options) {
       throw new Error('options is required');
     }
@@ -37,7 +37,7 @@ class WechatPay {
    * @param code url上的code
    * @param callback 回调
    */
-  getUserOpenId(code: string, callback?: ({}) => void): Promise<wechatOpenidRes> {
+  getUserOpenId(code: string, callback?: ({}) => void): Promise<WechatOpenidRes> {
     const { appid, secret } = this;
     return new Promise((resolve, reject) => {
       const openidUrl = url.format(Object.assign({}, {
@@ -53,8 +53,7 @@ class WechatPay {
         if (err || res.statusCode !== 200) {
           throw new Error('get openid failed');
         } else {
-          resolve(data as wechatOpenidRes);
-          // tslint:disable-next-line:curly
+          resolve(data as WechatOpenidRes);
           if (callback) callback(data);
         }
       })
@@ -80,7 +79,6 @@ class WechatPay {
    * 获取client的ip
    * @param req request
    */
-  // tslint:disable-next-line:member-ordering
   getClientIp(req) {
     return req.ip.match(/\d+\.\d+\.\d+\.\d+/);
   }
@@ -90,8 +88,7 @@ class WechatPay {
    * @param options 发起支付的参数
    * @param callback 回调函数
    */
-  payment(options: paymentArgs, callback?: ({}) => void) {
-    // tslint:disable-next-line:curly
+  payment(options: PaymentArgs, callback?: ({}) => void) {
     if (!options) throw new Error('payment method need args');
     return new Promise((resolve, reject) => {
       const basicReq = {
@@ -121,7 +118,7 @@ class WechatPay {
         try {
           originalData = JSON.parse(xml2json.toJson(data));
         } catch (error) {
-          reject(new Error('xml parsing failed'));
+          reject(new Error('xml parse failed'));
           return;
         }
         if (originalData.xml.return_code === 'SUCCESS') {
@@ -138,7 +135,6 @@ class WechatPay {
           original_data: originalData.xml,
           wechatpay_data: wechatPayData,
         })
-        // tslint:disable-next-line:curly
         if (callback) callback({ original_data: originalData, wechatpay_data: wechatPayData });
       })
     })
