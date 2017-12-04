@@ -142,4 +142,4 @@ class WechatPay {
 
 }
 
-export default WechatPay;
+export = WechatPay;

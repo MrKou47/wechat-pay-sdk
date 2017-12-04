@@ -6,7 +6,7 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "dev": "node example/index.js",
-    "bundle": "webpack && node bin/fix_default_export.js",
+    "bundle": "webpack",
     "test": "nyc mocha --require ts-node/register --require source-map-support/register test/index.ts --timeout 15000",
     "report": "nyc report -r lcovonly && codecov --token=9496ab7a-8852-4c51-895b-25d0cd51e42d"
   },
