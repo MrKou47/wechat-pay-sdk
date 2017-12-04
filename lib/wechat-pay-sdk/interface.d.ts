@@ -1,11 +1,11 @@
-export interface wechatPayOptions {
+export interface WechatPayOptions {
     baseUrl?: string;
     appid: string;
     secret: string;
     mch_id: string;
     key: string;
 }
-export interface wechatSign {
+export interface WechatSign {
     appid: string;
     mch_id: string;
     nonce_str: string;
@@ -17,12 +17,12 @@ export interface wechatSign {
     trade_type: 'JSAPI';
     openid: string;
 }
-export interface wechatOpenidRes {
+export interface WechatOpenidRes {
     expires_in: string;
     openid: string;
     session_key: string;
 }
-export interface paymentArgs {
+export interface PaymentArgs {
     attach?: string;
     body: string;
     detail?: string;
