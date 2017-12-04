@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import WechatPay from '../src';
+import WechatPay = require('../src/index');
 import { readomString } from '../src/util';
 
 const wechatPay = new WechatPay({
