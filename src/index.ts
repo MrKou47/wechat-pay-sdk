@@ -20,7 +20,7 @@ class WechatPay {
   baseApiObj = {
     protocol: 'https',
     hostname: 'api.weixin.qq.com',
-  }
+  };
   constructor(options: WechatPayOptions) {
     if (!options) {
       throw new Error('options is required');
@@ -56,7 +56,7 @@ class WechatPay {
           resolve(data as WechatOpenidRes);
           if (callback) callback(data);
         }
-      })
+      });
     });
   }
 
@@ -76,14 +76,6 @@ class WechatPay {
   }
 
   /**
-   * 获取client的ip
-   * @param req request
-   */
-  getClientIp(req) {
-    return req.ip.match(/\d+\.\d+\.\d+\.\d+/);
-  }
-
-  /**
    * 发起微信支付
    * @param options 发起支付的参数
    * @param callback 回调函数
@@ -96,7 +88,7 @@ class WechatPay {
         mch_id: this.mch_id,
         nonce_str: readomString(32),
         trade_type: 'JSAPI',
-      }
+      };
       const customerReq = Object.assign({}, basicReq, options);
 
       const sign = this._generatorSign(customerReq);
@@ -134,10 +126,10 @@ class WechatPay {
         resolve({
           original_data: originalData.xml,
           wechatpay_data: wechatPayData,
-        })
+        });
         if (callback) callback({ original_data: originalData, wechatpay_data: wechatPayData });
-      })
-    })
+      });
+    });
   }
 
 }

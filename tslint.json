@@ -5,10 +5,11 @@
 		"no-unused-variable": true,
 		"curly": false,
 		"class-name": true,
-		"semicolon": ["always"],
+		"semicolon": [true,"always"],
 		"triple-equals": true,
 		"no-var-requires": false,
 		"quotemark": [
+			true,
 			"single"
 		],
 		"interface-name": [
