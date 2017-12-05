@@ -21,13 +21,15 @@ const customize = new wechatPay({
 });
 
 customize.getUserOpenId(code).then((res) => {
-  console.log(res); // openid result
+  console.log(res); // receive opendid response
 });
 
 customize.payment({...options}).then((res) => {
-  console.log(res); // wechat pay result
+  console.log(res); // receive payment response
 });
 ```
+
+**ATTENTION：** you should use `import wechatPay = require('wechat-pay-sdk');` if you used in the Typescript file. 
 
 ### API
 
