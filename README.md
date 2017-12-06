@@ -94,3 +94,26 @@ Before start example, you shou edit `wechat-config.js` with you config. And then
 ```bash
 $ npm run dev
 ```
+
+#### How to use in `wxml`?
+
+Example:
+
+```js
+fetch(YOUR_SERVER_URL, { method: 'POST', body: YOUR_REQUEST_BODY }).then(res => {
+  wx.requestPayment({
+    ...res.wechatpay_data,
+    success() {
+      // success callback
+    },
+    fail() {
+      // failed callback
+    },
+    complete() {
+      // complete callback
+    }
+  });
+});
+```
+
+**DOC:** [https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html](https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html)

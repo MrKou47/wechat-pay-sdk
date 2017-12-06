@@ -22,11 +22,6 @@ declare class WechatPay {
      */
     private _generatorSign(obj);
     /**
-     * 获取client的ip
-     * @param req request
-     */
-    getClientIp(req: any): any;
-    /**
      * 发起微信支付
      * @param options 发起支付的参数
      * @param callback 回调函数

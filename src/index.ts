@@ -1,12 +1,12 @@
-const xmlParser = require('js2xmlparser');
-const xml2json = require('xml2json');
-const md5 = require('md5');
-const fs = require('fs');
-
-import { WechatPayOptions, WechatSign, WechatOpenidRes, PaymentArgs } from './interface';
+import * as js2xml from 'js2xmlparser';
+import * as xml2json from 'xml2json';
+import * as md5 from 'md5';
 import * as request from 'request';
 import * as url from 'url';
+
 import { readomString } from './util';
+
+import { WechatPayOptions, WechatSign, WechatOpenidRes, PaymentArgs } from './interface';
 
 class WechatPay {
   // api hostname
@@ -37,7 +37,7 @@ class WechatPay {
    * @param code url上的code
    * @param callback 回调
    */
-  getUserOpenId(code: string, callback?: ({}) => void): Promise<WechatOpenidRes> {
+  getUserOpenId(code: string, callback?: (result: WechatOpenidRes) => void): Promise<WechatOpenidRes> {
     const { appid, secret } = this;
     return new Promise((resolve, reject) => {
       const openidUrl = url.format(Object.assign({}, {
@@ -80,7 +80,7 @@ class WechatPay {
    * @param options 发起支付的参数
    * @param callback 回调函数
    */
-  payment(options: PaymentArgs, callback?: ({}) => void) {
+  payment(options: PaymentArgs, callback?: (result: any) => void) {
     if (!options) throw new Error('payment method need args');
     return new Promise((resolve, reject) => {
       const basicReq = {
@@ -95,7 +95,7 @@ class WechatPay {
 
       customerReq.sign = sign;
 
-      const modal2xml = xmlParser.parse('xml', customerReq);
+      const modal2xml = js2xml.parse('xml', customerReq);
 
       request({
         url: url.format(Object.assign({}, this.baseApiObj, { hostname: 'api.mch.weixin.qq.com', pathname: '/pay/unifiedorder' })),
@@ -122,6 +122,7 @@ class WechatPay {
             package: `prepay_id=${ prepay_id }`,
             signType: 'MD5',
           };
+          wechatPayData.paySign = this._generatorSign(wechatPayData);
         }
         resolve({
           original_data: originalData.xml,

@@ -1,6 +1,6 @@
 {
   "name": "wechat-pay-sdk",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "sdk for wechat developer",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -26,8 +26,7 @@
       ".tsx"
     ],
     "include": [
-      "src",
-      "test"
+      "src"
     ],
     "exclude": [
       "**/*.d.ts"
