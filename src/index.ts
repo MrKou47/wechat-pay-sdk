@@ -22,6 +22,7 @@ class WechatPay {
     hostname: 'api.weixin.qq.com',
   };
   constructor(options: WechatPayOptions) {
+    /* istanbul ignore if */
     if (!options) {
       throw new Error('options is required');
     }
@@ -54,6 +55,7 @@ class WechatPay {
           throw new Error('get openid failed');
         } else {
           resolve(data as WechatOpenidRes);
+          /* istanbul ignore else */
           if (callback) callback(data);
         }
       });
@@ -128,6 +130,7 @@ class WechatPay {
           original_data: originalData.xml,
           wechatpay_data: wechatPayData,
         });
+        /* istanbul ignore else */
         if (callback) callback({ original_data: originalData, wechatpay_data: wechatPayData });
       });
     });
